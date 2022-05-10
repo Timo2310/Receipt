@@ -36,7 +36,7 @@ public class TestClass {
 		assertEquals(0.85, item3.getTaxPrice(), 0.009);
 		assertEquals(0, item3.getTax(), 0.009);
 		assertEquals(10.50, item4.getTaxPrice(), 0.009);
-		assertEquals(50, item4.getTax(), 0.009);
+		assertEquals(0.50, item4.getTax(), 0.009);
 		assertEquals(54.65, item5.getTaxPrice(), 0.009);
 		assertEquals(7.15, item5.getTax(), 0.009);
 		assertEquals(20.89, item6.getTaxPrice(), 0.009);
