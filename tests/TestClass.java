@@ -22,25 +22,25 @@ public class TestClass {
 	public void testGetSet() {
 		assertEquals("book", item1.getName());
 		assertEquals(true, item1.getType());
-		assertEquals(12.49, item1.getPrice());
+		assertEquals(12.49, item1.getPrice(), 0.009);
 		assertEquals(false, item1.isImported());
 	}
 	
 	@Test
 	@DisplayName("Tax_calculation")
 	public void testTaxCalc() {
-		assertEquals(12.49, item1.getTaxPrice());
-		assertEquals(0, item1.getTax());
-		assertEquals(16.49, item1.getTaxPrice());
-		assertEquals(1.50, item1.getTax());
-		assertEquals(0.85, item1.getTaxPrice());
-		assertEquals(0, item1.getTax());
-		assertEquals(10.50, item1.getTaxPrice());
-		assertEquals(50, item1.getTax());
-		assertEquals(54.65, item1.getTaxPrice());
-		assertEquals(7.15, item1.getTax());
-		assertEquals(20.89, item1.getTaxPrice());
-		assertEquals(2.10, item1.getTax());
+		assertEquals(12.49, item1.getTaxPrice(),  0.009);
+		assertEquals(0, item1.getTax(),  0.009);
+		assertEquals(16.49, item1.getTaxPrice(),  0.009);
+		assertEquals(1.50, item1.getTax(),  0.009);
+		assertEquals(0.85, item1.getTaxPrice(),  0.009);
+		assertEquals(0, item1.getTax(),  0.009);
+		assertEquals(10.50, item1.getTaxPrice(),  0.009);
+		assertEquals(50, item1.getTax(),  0.009);
+		assertEquals(54.65, item1.getTaxPrice(),  0.009);
+		assertEquals(7.15, item1.getTax(),  0.009);
+		assertEquals(20.89, item1.getTaxPrice(),  0.009);
+		assertEquals(2.10, item1.getTax(),  0.009);
 		
 	}
 
