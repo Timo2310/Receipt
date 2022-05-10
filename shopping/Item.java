@@ -2,15 +2,15 @@ package shopping;
 
 public class Item {
 	
-	private String name;
-	private boolean type;
-	private boolean imported;
-	private double baseprice;
-	private double taxprice;
+	private String name = "";
+	private boolean type = false;
+	private boolean imported = false;
+	private double baseprice = 0.0;
+	private double taxprice = 0.0;
 	
 	
 	public Item (String productinfo, boolean type) {
-		processPrInfo();
+		processPrInfo(productinfo);
 		this.type = type;
 	}
 	
@@ -30,10 +30,6 @@ public class Item {
 		return imported;
 	}
 	
-	public void processPrInfo() {
-		
-	}
-	
 	public double getTaxPrice() {
 		return taxprice;
 	}
@@ -42,6 +38,34 @@ public class Item {
 		return taxprice-baseprice;
 	}
 	
+	public void processPrInfo(String info) {
+		
+		if(info.contains("imported")) {
+			imported = true;
+			int i = info.indexOf("imported");
+			info = info.substring(0, i).concat(info.substring(i+8));
+		}
+		
+		String[] array = info.split(" ");
+		
+		baseprice = Double.parseDouble(array[(array.length-1)]);
+		
+		for(int k = 0; k < array.length; k++) {
+			if(array[k].equals("at")) {
+				break;
+			}
+			name.concat(array[k]).concat(" ");
+		}
+		name = name.strip();
+		calcTax();
+		return;
+	}
+	
+	public void calcTax() {
+		
+	}
+	
+	
+	
 
 }
-
