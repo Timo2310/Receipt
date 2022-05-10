@@ -1,5 +1,8 @@
 package shopping;
 
+import java.text.DecimalFormat;
+
+
 public class Item {
 	
 	private String name = "";
@@ -7,13 +10,16 @@ public class Item {
 	private boolean imported = false;
 	private double baseprice = 0.0;
 	private double taxprice = 0.0;
+	private double tax = 0.0;
 	
-	
+	//Constructor
 	public Item (String productinfo, boolean type) {
-		processPrInfo(productinfo);
 		this.type = type;
+		processPrInfo(productinfo);
+		taxprice = round(baseprice + tax);
 	}
 	
+	//Getters
 	public String getName() {
 		return name;
 	}
@@ -35,11 +41,11 @@ public class Item {
 	}
 	
 	public double getTax() {
-		return taxprice-baseprice;
+		return tax;
 	}
 	
+	//processes given productinfo
 	public void processPrInfo(String info) {
-		
 		if(info.contains("imported")) {
 			imported = true;
 			int i = info.indexOf("imported");
@@ -54,18 +60,51 @@ public class Item {
 			if(array[k].equals("at")) {
 				break;
 			}
-			name.concat(array[k]).concat(" ");
+			name = name.concat(array[k]).concat(" ");
 		}
 		name = name.strip();
 		calcTax();
 		return;
 	}
 	
+	//calculates tax and rounds it up (only the tax!)
 	public void calcTax() {
 		
+		double importtax = 0.0;
+		double saletax = 0.0;
+		if(imported) {
+			importtax = 1.0;
+		}
+		if(!type) {
+			saletax = 1.0;
+		}
+
+		tax = roundUp((importtax * (baseprice/20)) + (saletax * baseprice/10));
+		return;
 	}
 	
+	//rounds up a number at 2 digits after the decimal
+	public double roundUp(double number) {
+		if (number <0.01) {
+			return 0.0;
+		}
+		DecimalFormat df = new DecimalFormat("0.00");
+		String numbers = df.format(number).replace(",",".");
+		int index = numbers.indexOf(".");
+		String round = "0";
+		int at = Integer.parseInt(Character.toString(numbers.charAt(index+2)));
+		if(at > 0 && at < 5) {
+			round = "5";
+		}
+		numbers = numbers.substring(0, index+2).concat(round);
+		return (Double.parseDouble(numbers));
+	}
 	
-	
+	//limits a number to two places after a decimal
+	public double round(double number) {
+		DecimalFormat df = new DecimalFormat("0.00");
+		String numbers = df.format(number).replace(",",".");
+		return Double.parseDouble(numbers);
+	}
 
 }
