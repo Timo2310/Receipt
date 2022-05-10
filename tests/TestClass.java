@@ -51,8 +51,8 @@ public class TestClass {
 		receipt.add("1 book at 12.49", true);
 		receipt.add("1 music CD at 14.99", false);
 		receipt.add("1 chocolate bar at 0.85", true);
-		assertEquals("1.50", receipt.getSalesTaxTotal());
-		assertEquals("29.83", receipt.getTotal());
+		assertEquals(1.50, receipt.getSalesTaxTotal(), 0.009);
+		assertEquals(29.83, receipt.getTotal(), 0.009);
 		assertEquals(true, receipt.printReceipt());
 	}
 
