@@ -21,7 +21,7 @@ public class TestClass {
 	@DisplayName("Getter/Setter_Test")
 	public void testGetSet() {
 		assertEquals("book", item1.getName());
-		assertEquals("book", item1.getType());
+		assertEquals(true, item1.getType());
 		assertEquals(12.49, item1.getPrice());
 		assertEquals(false, item1.isImported());
 	}
