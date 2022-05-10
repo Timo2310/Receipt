@@ -43,5 +43,17 @@ public class TestClass {
 		assertEquals(2.10, item6.getTax(), 0.009);
 		
 	}
+	
+	
+	@Test
+	@DisplayName("Total Price")
+	public void calcTotal() {
+		receipt.add("1 book at 12.49");
+		receipt.add("1 music CD at 14.99");
+		receipt.add("1 chocolate bar at 0.85");
+		assertEquals(1.50, receipt.getSalesTaxTotal());
+		assertEquals(29.83, receipt.getTotal());
+		assertEquals(true, receipt.printReceipt());
+	}
 
 }
