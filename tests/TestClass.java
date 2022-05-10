@@ -48,9 +48,9 @@ public class TestClass {
 	@Test
 	@DisplayName("Total Price")
 	public void calcTotal() {
-		receipt.add("1 book at 12.49");
-		receipt.add("1 music CD at 14.99");
-		receipt.add("1 chocolate bar at 0.85");
+		receipt.add("1 book at 12.49", true);
+		receipt.add("1 music CD at 14.99", false);
+		receipt.add("1 chocolate bar at 0.85", true);
 		assertEquals(1.50, receipt.getSalesTaxTotal());
 		assertEquals(29.83, receipt.getTotal());
 		assertEquals(true, receipt.printReceipt());
