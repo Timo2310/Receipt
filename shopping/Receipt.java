@@ -36,6 +36,23 @@ public class Receipt {
 		return total;
 	}
 	
+	public boolean printBasket() {
+		DecimalFormat df = new DecimalFormat("0.00");
+		try {
+			for(int u = 0; u < basket.size(); u++) {
+				System.out.print("1 ");
+				if(basket.get(u).isImported()) {
+					System.out.print("imported ");
+				}
+				System.out.println(basket.get(u).getName() + ": " + df.format(basket.get(u).getTaxPrice()).replace(",","."));
+			}
+			System.out.println("");
+			return true;
+		} catch(Exception e) {
+			return false;
+		}
+	}
+	
 	public boolean printReceipt() {
 		DecimalFormat df = new DecimalFormat("0.00");
 		try {
@@ -48,8 +65,7 @@ public class Receipt {
 			}
 			System.out.println("Sales Taxes: " + df.format(getSalesTaxTotal()).replace(",","."));
 			System.out.println("Total: " + df.format(getTotal()).replace(",","."));
-			
-			basket.clear();
+			System.out.println("");
 			return true;
 		} catch(Exception e) {
 			return false;
@@ -57,4 +73,5 @@ public class Receipt {
 	}
 
 }
+
 
