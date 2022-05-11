@@ -1,8 +1,5 @@
 package shopping;
 
-import java.text.DecimalFormat;
-
-
 public class Item {
 	
 	private String name = "";
@@ -16,7 +13,7 @@ public class Item {
 	public Item (String productinfo, boolean type) {
 		this.type = type;
 		processPrInfo(productinfo);
-		taxprice = round(baseprice + tax);
+		taxprice = baseprice + tax;
 	}
 	
 	//Getters
@@ -78,44 +75,17 @@ public class Item {
 		if(!type) {
 			saletax = 1.0;
 		}
-
-		tax = roundUp((importtax * (baseprice/20)) + (saletax * baseprice/10));
-		return;
-	}
-	
-	//rounds up a number at 2 digits after the decimal
-	public double roundUp(double number) {
-		if (number <0.01) {
-			return 0.0;
-		}
-		DecimalFormat df = new DecimalFormat("0.00");
-		String numbers = df.format(number).replace(",",".");
-		int index = numbers.indexOf(".");
-		String round = "0";
-		int at = Integer.parseInt(Character.toString(numbers.charAt(index+2)));
-		if(at > 0 && at < 5) {
-			numbers = numbers.substring(0, index+2).concat("5");
-			return (Double.parseDouble(numbers));
-			
-		}
-		if(at == 0) {
-			numbers = numbers.substring(0, index+2).concat(round);
-			return (Double.parseDouble(numbers));
-		}
-		numbers = numbers.substring(0, index+2).concat(round);
-		return (Double.parseDouble(numbers)+0.1);
 		
-	}
+		double t = (saletax*0.1) + (importtax*0.05);
+		
+		t = t*baseprice*100;
+		
+		while(t%5 != 0) {
+			t = t+0.05;
+			t = Math.ceil(t);
+		}
+		tax = t/100;
+		return;
+	}	
 	
-	//limits a number to two places after a decimal
-	public static double round(double number) {
-		DecimalFormat df = new DecimalFormat("0.00");
-		String numbers = df.format(number).replace(",",".");
-		return Double.parseDouble(numbers);
-	}
-	
-	
-	
-
 }
-
