@@ -36,7 +36,5 @@ The type needs to be given by the user, since I did not want to hardcode stuff. 
 
 For similar reasons I just programmed a simple loop for entering products. This would probably be done by a gui in a real setting, so the main is purely for checking if the program works.
 
-Since I could not find a proper solution for the numberformat problem, I implemented my own solution (which accomplishes the same thing).
-
 Looking forward to having a chat with you!
 
