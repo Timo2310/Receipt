@@ -56,7 +56,7 @@ public class Item {
 		
 		baseprice = Double.parseDouble(array[(array.length-1)]);
 		
-		for(int k = 0; k < array.length; k++) {
+		for(int k = 0; k < array.length-1; k++) {
 			if(array[k].equals("at")) {
 				break;
 			}
@@ -94,17 +94,28 @@ public class Item {
 		String round = "0";
 		int at = Integer.parseInt(Character.toString(numbers.charAt(index+2)));
 		if(at > 0 && at < 5) {
-			round = "5";
+			numbers = numbers.substring(0, index+2).concat("5");
+			return (Double.parseDouble(numbers));
+			
+		}
+		if(at == 0) {
+			numbers = numbers.substring(0, index+2).concat(round);
+			return (Double.parseDouble(numbers));
 		}
 		numbers = numbers.substring(0, index+2).concat(round);
-		return (Double.parseDouble(numbers));
+		return (Double.parseDouble(numbers)+0.1);
+		
 	}
 	
 	//limits a number to two places after a decimal
-	public double round(double number) {
+	public static double round(double number) {
 		DecimalFormat df = new DecimalFormat("0.00");
 		String numbers = df.format(number).replace(",",".");
 		return Double.parseDouble(numbers);
 	}
+	
+	
+	
 
 }
+
