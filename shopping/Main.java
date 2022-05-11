@@ -30,7 +30,6 @@ public class Main {
 				try {
 					
 					String[] array = order.split(" ");
-					Integer.parseInt(array[0]);
 					Double.parseDouble(array[array.length-1]);
 					System.out.println("");
 					break;
@@ -80,3 +79,4 @@ public class Main {
 	}
 
 }
+
