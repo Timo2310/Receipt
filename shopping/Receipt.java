@@ -12,12 +12,22 @@ public class Receipt {
 	}
 	
 	public void add(String order, boolean type) {
-		int count = Integer.parseInt(Character.toString(order.charAt(0)));
-		String product = order.substring(2);
-		for(int i = 0; i < count; i++) {
-			basket.add(new Item(product, type));
+		int count = 0;
+		try {
+			count = Integer.parseInt(Character.toString(order.charAt(0)));
+			String product = order.substring(2);
+			for(int i = 0; i < count; i++) {
+				basket.add(new Item(product, type));
+			}
+		} catch (Exception e) {
+			count = 1;
+			String product = order.substring(0);
+			for(int i = 0; i < count; i++) {
+				basket.add(new Item(product, type));
+			}
 		}
 		return;
+		
 	}
 	
 	public double getTotal() {
@@ -73,5 +83,6 @@ public class Receipt {
 	}
 
 }
+
 
 
