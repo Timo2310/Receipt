@@ -13,7 +13,7 @@ public class Item {
 	public Item (String productinfo, boolean type) {
 		this.type = type;
 		processPrInfo(productinfo);
-		taxprice = baseprice + tax;
+		taxprice = (Math.rint((baseprice + tax)*100))/100;
 	}
 	
 	//Getters
