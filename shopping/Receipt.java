@@ -1,7 +1,8 @@
 package shopping;
 
-import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Receipt {
 	
@@ -47,14 +48,16 @@ public class Receipt {
 	}
 	
 	public boolean printBasket() {
-		DecimalFormat df = new DecimalFormat("0.00");
+		NumberFormat nf = NumberFormat.getInstance(Locale.UK);
+		nf.setMinimumFractionDigits(2);
+		
 		try {
 			for(int u = 0; u < basket.size(); u++) {
 				System.out.print("1 ");
 				if(basket.get(u).isImported()) {
 					System.out.print("imported ");
 				}
-				System.out.println(basket.get(u).getName() + ": " + df.format(basket.get(u).getTaxPrice()).replace(",","."));
+				System.out.println(basket.get(u).getName() + ": " + nf.format(basket.get(u).getTaxPrice()));
 			}
 			System.out.println("");
 			return true;
@@ -64,17 +67,18 @@ public class Receipt {
 	}
 	
 	public boolean printReceipt() {
-		DecimalFormat df = new DecimalFormat("0.00");
+		NumberFormat nf = NumberFormat.getInstance(Locale.UK);
+		nf.setMinimumFractionDigits(2);
 		try {
 			for(int u = 0; u < basket.size(); u++) {
 				System.out.print("1 ");
 				if(basket.get(u).isImported()) {
 					System.out.print("imported ");
 				}
-				System.out.println(basket.get(u).getName() + ": " + df.format(basket.get(u).getTaxPrice()).replace(",","."));
+				System.out.println(basket.get(u).getName() + ": " + nf.format(basket.get(u).getTaxPrice()));
 			}
-			System.out.println("Sales Taxes: " + df.format(getSalesTaxTotal()).replace(",","."));
-			System.out.println("Total: " + df.format(getTotal()).replace(",","."));
+			System.out.println("Sales Taxes: " + nf.format(getSalesTaxTotal()));
+			System.out.println("Total: " + nf.format(getTotal()));
 			System.out.println("");
 			return true;
 		} catch(Exception e) {
@@ -83,6 +87,3 @@ public class Receipt {
 	}
 
 }
-
-
-
