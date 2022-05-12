@@ -36,5 +36,7 @@ The type needs to be given by the user, since I did not want to hardcode stuff. 
 
 For similar reasons I just programmed a simple loop for entering products. This would probably be done by a gui in a real setting, so the main is purely for checking if the program works.
 
+The program displays numbers in the UK format. Since it probably used my german locale the decimal points were commas (was what I assumed). So technically everything should work on english systems, etc. without me doing anything. But because it didn't match your specified output I added the UK Locale format.
+
 Looking forward to having a chat with you!
 
