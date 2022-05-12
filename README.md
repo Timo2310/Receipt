@@ -19,7 +19,7 @@ Possibility 3:
   - put them in a folder under "src/shopping/\*.java" (eg: Receipt/src/shopping/\*.java)
   - enter the folder that contains the src folder (in the above example 'Receipt')
   - open a cmd Window here (enter cmd in the path bar for quick access)
-  - enter "javac src/shopping/\*.java -d 'yourPreferredOutputPath' " (eg: java src/shopping/\*.java -d classes)
+  - enter "javac src/shopping/\*.java -d 'yourPreferredOutputPath' " (eg: javac src/shopping/\*.java -d classes)
   - go into the created folder (eg: classes in the above example)
   - open a cmd window here (or navigate the previous window to this directory)
   - enter "java shopping/Main" and press enter
