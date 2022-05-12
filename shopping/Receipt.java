@@ -16,7 +16,11 @@ public class Receipt {
 		int count = 0;
 		try {
 			count = Integer.parseInt(Character.toString(order.charAt(0)));
-			String product = order.substring(2);
+			String product = "";
+			product = order.substring(2);
+			if(!Character.toString(order.charAt(1)).equals(" ")) {
+				product = order.substring(1);
+			}
 			for(int i = 0; i < count; i++) {
 				basket.add(new Item(product, type));
 			}
